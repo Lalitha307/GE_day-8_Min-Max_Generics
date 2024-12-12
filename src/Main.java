@@ -1,15 +1,37 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
+import java.util.Scanner;
+
 public class Main {
     public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        Scanner sc = new Scanner(System.in);
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+        System.out.print("Enter the first number: ");
+        int num1 = sc.nextInt();
+
+        System.out.print("Enter the second number: ");
+        int num2 = sc.nextInt();
+
+        System.out.print("Enter the third number: ");
+        int num3 = sc.nextInt();
+
+        MaxNumber maxObj = new MaxNumber();
+        int maxi = maxObj.testMax(num1, num2, num3);
+        System.out.println("Maximum number is " + maxi);
+        sc.close();
+    }
+}
+
+class MaxNumber {
+    public int testMax(int num1, int num2, int num3) {
+        Integer maxx = Integer.valueOf(num1);
+
+        if (Integer.valueOf(num2).compareTo(maxx) > 0) {
+            maxx = Integer.valueOf(num2);
         }
+
+        if (Integer.valueOf(num3).compareTo(maxx) > 0) {
+            maxx = Integer.valueOf(num3);
+        }
+
+        return maxx.intValue();
     }
 }
