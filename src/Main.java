@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
@@ -22,23 +23,17 @@ public class Main {
         sc.close();
     }
 }
-
 class MaxValue<T extends Comparable<T>> {
-    private T a, b, c;
-
-    public MaxValue(T a, T b, T c) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
+    private T[] values;
+    @SafeVarargs
+    public MaxValue(T... values) {
+        this.values = values;
     }
-
     public T testMaximum() {
-        return MaxValue.testMaximum(a, b, c);
+        return MaxValue.testMaximum(values);
     }
-    public static <T extends Comparable<T>> T testMaximum(T a, T b, T c) {
-        T max = a;
-        if (b.compareTo(max) > 0) max = b;
-        if (c.compareTo(max) > 0) max = c;
-        return max;
+    public static <T extends Comparable<T>> T testMaximum(T... values) {
+        Arrays.sort(values);
+        return values[values.length - 1];
     }
 }
